@@ -44,7 +44,7 @@ const CountdownView = Cycle.component('CountdownView', function (interactions, p
             const seconds = countdown % 60;
 
             const toPercent = value => value * 5 / 3.0;
-            const status = countdown <= 0 ? "success" : state.pause ? "exception" : "active"
+            const status = countdown <= 0 ? "success" : state.pause ? "exception" : "active";
             const formatInner = (str) =>
                 <div>
                     <div>
