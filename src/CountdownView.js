@@ -14,13 +14,12 @@ const CountdownView = Cycle.component('CountdownView', function (interactions, p
     const totalSeconds = props.value.seconds + 60 * props.value.minutes + 3600 * props.value.hours;
 
     const clockStream = Rx.Observable.interval(1000);
-    const pauseStream = interactions.get("OnPause")
-        .map(_ => true)
-        .startWith(false)
-        .scan((a, b) => !a);
-    const restartStream = interactions.get("OnRestart")
-        .map(_ => true)
+    const pauseStream = interactions.get("OnPause").map(_ => true).startWith(false).scan((a, b) => !a);
+    const restartStream = interactions.get("OnRestart").map(_ => true)
         .concatMap(
+            // `false` keeps the timer running. `true` sets the timer state to initial.
+            // This sends a `false` initially, and then a `true` followed by a `false` delayed by 1 second
+            // because, everything depends on the clock pulse, which is generated only once per second.
             _ => Rx.Observable.from([false]).delay(1000).startWith(true)
         ).startWith(false);
 
@@ -63,12 +62,13 @@ const CountdownView = Cycle.component('CountdownView', function (interactions, p
                 <div>
                     <Card title="Pomodoro Timer" bordered={false} extra={
                         <ButtonGroup>
-                            <Tooltip title="Pause">
-                                <Button type="ghost" icon="pause" disabled={countdown <= 0}
+                            <Tooltip title={state.pause ? "Resume" : "Pause"}>
+                                <Button icon={state.pause ? "caret-left" : "pause"}
+                                        disabled={countdown <= 0}
                                         onClick={interactions.listener("OnPause")}/>
                             </Tooltip>
                             <Tooltip title="Restart">
-                                <Button type="ghost" icon="reload" disabled={countdown <= 0}
+                                <Button icon="reload" disabled={countdown <= 0}
                                         onClick={interactions.listener("OnRestart")}/>
                             </Tooltip>
                         </ButtonGroup>
