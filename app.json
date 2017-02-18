@@ -1,5 +1,5 @@
 {
-  "name": "productivity-toolkit",
+  "name": "js-timer",
   "description": "",
   "scripts": {
     "postdeploy": "npm run build"
