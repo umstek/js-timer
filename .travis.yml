@@ -17,6 +17,7 @@ deploy:
   target-branch: master
   committer-from-gh: true
   verbose: true
+  fqdn: https://www.umstek.tk/js-timer/
   on:
     branch: source
 env:
