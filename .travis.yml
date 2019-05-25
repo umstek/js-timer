@@ -1,0 +1,22 @@
+language: node_js
+node_js:
+  - node
+cache:
+  yarn: true
+  directories:
+    - node_modules
+branches:
+  only:
+    - source
+script:
+  yarn build
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GH_Key
+  local-dir: dist
+  target-branch: master
+  committer-from-gh: true
+  verbose: true
+  on:
+    branch: source
