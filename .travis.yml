@@ -1,22 +1,24 @@
 language: node_js
 node_js:
-  - node
+- node
 cache:
   yarn: true
   directories:
-    - node_modules
+  - node_modules
 branches:
   only:
-    - source
-script:
-  yarn build
+  - source
+script: yarn build
 deploy:
   provider: pages
   skip-cleanup: true
-  github-token: $GH_Key
+  github-token: "$GH_Key"
   local-dir: dist
   target-branch: master
   committer-from-gh: true
   verbose: true
   on:
     branch: source
+env:
+  global:
+    secure: KibyG0wHfWKiR7DPEkUoSVdjQy7Dpv/M3J9ecO9kTsfO1notoHH6ZtL0/qJATD2UE6gQ+tBg95PtZX/tfhy61Ahfj+8oQ5NwgKa9mSWbfSJ6df/Vd6x+W189wPsX7mGZbE+/wGofyEx05lMs0qkXsl1CsZI01j6irKiuuTij+Ci/p4PEgXuHiOXKxchFy8P0YmAxVC0L7vl6lPr+FpnuPIfPo/QhEuytuviDnUcePmx8M+P7AEiAvNNIOD0O3egJUdRL7exTnzkzDtRvval/s2WU9EpBOmrRczyCnrgMyJ9wqBvDHHJTRwgmsYE3K+6e7JZ6ejW5Del5SDtHN0HxSoD4YDnTIhz9Iz22H1mjHt+w7mDZQMWoiMx3l29JEjOlKX1Wf/PnGyZDQGxhZi0fU2AM+Drige2FXPojPW4L5weJPHRQI8VNySoqIySx5Mwm/K4nUAY4MhH22cHDYcl0LNuRmXX+vh0FevAZ+r2qYGE/wKouFG+EipUfTQTdAmzsejCgxTCeVzo9FY4ZUcztqXJk6sXJ1Ow0Ta5hsB9mMiql0iVBVSOE0UV9QlukoYP8rg0jkOo7BhFJFMtSHlkvsoTZJ6RHqTNEKBVOMFCux+PDnS6TP6jLVs4DAQjeNHU3z6JxO3xDsj+2Hq4Zl4qi31Ol5Ho4bXvWx7xgAXv2lEA=
