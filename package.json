@@ -1,0 +1,30 @@
+{
+  "name": "js-timer",
+  "version": "0.3.0",
+  "description": "A timer example using cycle, rx and react",
+  "main": "index.html",
+  "repository": "https://github.com/umstek/js-timer.git",
+  "author": "Wickramaranga Abeygunawardhana <umstek@live.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel index.html --open",
+    "build": "parcel build index.html --out-dir docs",
+    "clean": "rm -rf build docs"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@types/react": "^16.8.18",
+    "@types/react-dom": "^16.8.4",
+    "babel-plugin-import": "^1.11.2",
+    "parcel-bundler": "^1.12.3",
+    "typescript": "^3.4.5"
+  },
+  "dependencies": {
+    "antd": "^3.18.2",
+    "cycle-react": "^6.0.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "rxjs": "^6.5.2",
+    "rxjs-compat": "^6.5.2"
+  }
+}
